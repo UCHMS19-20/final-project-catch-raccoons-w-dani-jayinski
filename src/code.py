@@ -12,7 +12,7 @@ navy = Vector3(2, 7, 93)
 color_counter = 0
 color_step = 0.00002
 # Create a display. Size must be a tuple, which is why it's in parentheses
-screen = pygame.display.set_mode( (400, 350) )
+screen = pygame.display.set_mode( (800, 600) )
 print(pygame.QUIT)
 
 
