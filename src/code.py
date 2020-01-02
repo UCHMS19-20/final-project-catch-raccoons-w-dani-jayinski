@@ -20,7 +20,7 @@ print(pygame.QUIT)
 
 #images used
 sun = pygame.image.load("src/img/Sun_with_sunglasses[1].jpg")
-raccoon = pygame.image.load("src/img/cute-grey-raccoon-free-clip-art-830x497[1].png")
+raccoon = pygame.image.load("src/img/raccoon-revised-md[1].png")
 
 #make a font object for title/instructions
 font = pygame.font.Font('freesansbold.ttf', 32) 
