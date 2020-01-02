@@ -1,5 +1,6 @@
 import sys
 import pygame
+import random
 from pygame.math import Vector3
 
 # Initialize pygame so it runs in the background and manages things
@@ -14,24 +15,34 @@ color_counter = 0
 # color_step = 0.00003
 color_step = .0001
 # Create a display. Size must be a tuple, which is why it's in parentheses
-screen = pygame.display.set_mode( (800, 600) )
+screen = pygame.display.set_mode( (1000, 500) )
 print(pygame.QUIT)
 
 #images used
 sun = pygame.image.load("src/img/Sun_with_sunglasses[1].jpg")
 raccoon = pygame.image.load("src/img/cute-grey-raccoon-free-clip-art-830x497[1].png")
 
-#make a font object
+#make a font object for title/instructions
 font = pygame.font.Font('freesansbold.ttf', 32) 
-text = font.render('Catch the Raccoons before daytime!', True, white) 
+text = font.render('Catch the raccoons before daytime!', True, white) 
 
 # Main loop. Your game would go inside this loop
 while True:
+    # make screen change color over time
+    screen.fill(navy.lerp(light_blue, color_counter))
+    # make text appear 
+    screen.blit(text, (200,10))
+    # make sun pop up
+    if color_counter == 1:
+        screen.blit(sun, (700,50))
+    
     #to change color of background in increments and then stop
     if color_counter < 1:
         color_counter += color_step
         if color_counter > 1:
             color_counter = 1
+    # to make raccoons pop up at random locations
+    screen.blit(raccoon, (600,60))
     # do something for each event in the event queue (list of things that happen)
     for event in pygame.event.get():
 
@@ -42,18 +53,11 @@ while True:
         if event.type == pygame.QUIT:
             # If so, exit the program
             sys.exit()
-    # make screen change color over time
-    screen.fill(navy.lerp(light_blue, color_counter))
-    # make text appear 
-    screen.blit(text, (100,10))
-    # make sun pop up
-    if color_counter == 1:
-        screen.blit(sun, (500,50))
-    
+  
     pygame.display.flip()
     
         
 
 
 
-    #make text of game pop up
+   
