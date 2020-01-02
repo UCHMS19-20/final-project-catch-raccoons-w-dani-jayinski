@@ -42,7 +42,8 @@ while True:
         if color_counter > 1:
             color_counter = 1
     # to make raccoons pop up at random locations
-    screen.blit(raccoon, (600,60))
+    for x in range(30):
+        screen.blit(raccoon, (random.randint(1,801), random.randint(1,801)))
     # do something for each event in the event queue (list of things that happen)
     for event in pygame.event.get():
 
