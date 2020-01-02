@@ -46,7 +46,12 @@ while True:
         screen.blit(raccoon, (random.randint(1,801), random.randint(1,801)))
     # do something for each event in the event queue (list of things that happen)
     for event in pygame.event.get():
-
+#WHAT I NEED TO DO:
+# figure out how to fix the raccoons popping up,
+# figure out if a raccooon is clicked
+def is_raccoon_caught()
+    """decide if raccoon is clicked"""
+# keep track of and display how many were clicked on
         # This line will print each event to the terminal
         print(event)
 
