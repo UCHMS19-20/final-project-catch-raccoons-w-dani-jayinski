@@ -10,10 +10,12 @@ light_blue = Vector3(173, 216, 230)
 navy = Vector3(2, 7, 93)
 # make it change slowly
 color_counter = 0
-color_step = 0.00002
+color_step = 0.00003
 # Create a display. Size must be a tuple, which is why it's in parentheses
 screen = pygame.display.set_mode( (800, 600) )
 print(pygame.QUIT)
+
+sun = pygame.image.load(r'C:\Users\djayinski\Documents\final project\imgs\Sun_with_sunglasses[1].jpg')
 
 
 
@@ -36,3 +38,13 @@ while True:
     # make screen change color over time
     screen.fill(navy.lerp(light_blue, color_counter))
     pygame.display.flip()
+
+    #make sun pop up
+    if screen.fill(light_blue) == True:
+        screen.blit(sun, (400, 300))
+        pygame.display.flip()
+        
+
+
+
+    #make text of game pop up
