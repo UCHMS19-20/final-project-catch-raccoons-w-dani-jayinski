@@ -3,7 +3,6 @@ import pygame
 import random
 
 # Initialize pygame so it runs in the background and manages things
-pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=512)
 pygame.init()
 
 # create colors
@@ -46,17 +45,7 @@ class Raccoon_popup:
         self.raccoons.append(raccoon.subsurface(575, 0, 116, 81))
         self.raccoons.append(raccoon.subsurface(717, 0, 116, 81))
         self.raccoons.append(raccoon.subsurface(853, 0, 116, 81))
-         # Positions of the holes in background
-        self.hole_positions = []
-        self.hole_positions.append((381, 295))
-        self.hole_positions.append((119, 366))
-        self.hole_positions.append((179, 169))
-        self.hole_positions.append((404, 479))
-        self.hole_positions.append((636, 366))
-        self.hole_positions.append((658, 232))
-        self.hole_positions.append((464, 119))
-        self.hole_positions.append((95, 43))
-        self.hole_positions.append((603, 11))
+        
     # Check whether the mouse click caught the raccoon or not
     def is_raccoon_caught(self, mouse_position, current_hole_position):
         mouse_x = mouse_position[0]
