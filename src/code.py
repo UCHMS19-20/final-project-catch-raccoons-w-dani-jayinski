@@ -29,6 +29,9 @@ text = font.render('Catch the Raccoons before daytime!', True, white)
 score = 0
 font2 = pygame.font.Font('freesansbold.ttf', 24)  
 score_text = font2.render(f'you caught {score} raccoons', True, black, white)
+# final text
+font3 = pygame.font.Font('freesansbold.ttf', 50) 
+final_text = font3.render(f'Congratulations! You caught {score} raccoons.', True, black, white)
 # x and y of raccoons
 x = 300
 y = 100
@@ -50,10 +53,7 @@ while True:
         color_counter += color_step
         if color_counter > 1:
             color_counter = 1
-    # make sun pop up
-    if color_counter == 1:
-        screen.blit(sun, (700,50))
-        
+
     
     # do something for each event in the event queue (list of things that happen)
     for event in pygame.event.get():
@@ -76,8 +76,13 @@ while True:
                 y = random.randint(0, 500 - raccoon.get_height())
                 r.x = x
                 r.y = y
-                score =+ 1
-               
+                score += 1
+    # make sun pop up
+    if color_counter == 1:
+        screen.blit(sun, (700,50))
+        #display final score
+        screen.blit(final_text, (0,200))
+
     # display score
     score_text = font2.render(f'you caught {score} raccoons', True, black, white)
     screen.blit(score_text, (720,450))
