@@ -38,7 +38,7 @@ y = 100
 #create timer event
 clock = pygame.time.Clock()
 TIMEREVENT = pygame.USEREVENT + 1
-pygame.time.set_timer(TIMEREVENT, 4000)
+pygame.time.set_timer(TIMEREVENT, 3000)
 
 
 # Main loop. Your game would go inside this loop
@@ -80,13 +80,14 @@ while True:
         screen.blit(sun, (700,50))
         #display final score
         final_text = font3.render(f'Congratulations! You caught {score} raccoons.', True, black, white)
-        screen.blit(final_text, (0,200))
-
-    # display score at bottom
-    score_text = font2.render(f'you caught {score} raccoons', True, black, white)
-    screen.blit(score_text, (720,450))
-    #show raccoon    
-    screen.blit(raccoon,(x,y))
+        screen.blit(final_text, (0,250))
+    else:
+        #show raccoon    
+        screen.blit(raccoon,(x,y))
+            # display score at bottom
+        score_text = font2.render(f'you caught {score} raccoons', True, black, white)
+        screen.blit(score_text, (720,450))
+    
     pygame.display.flip()
     
         
