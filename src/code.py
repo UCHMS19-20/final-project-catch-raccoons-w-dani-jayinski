@@ -13,7 +13,7 @@ black = Vector3(0,0,0)
 # make it change slowly
 color_counter = 0
 
-color_step = .0003
+color_step = .0002
 # Create a display. Size must be a tuple, which is why it's in parentheses
 screen = pygame.display.set_mode( (1000, 500) )
 print(pygame.QUIT)
@@ -38,23 +38,21 @@ y = 100
 #create timer event
 clock = pygame.time.Clock()
 TIMEREVENT = pygame.USEREVENT + 1
-pygame.time.set_timer(TIMEREVENT, 2000)
+pygame.time.set_timer(TIMEREVENT, 4000)
 
 
 # Main loop. Your game would go inside this loop
 while True:
     # make screen change color over time
     screen.fill(navy.lerp(light_blue, color_counter))
-    # make text appear 
+    # make title text appear 
     screen.blit(text, (200,10))
-
     #to change color of background in increments and then stop
     if color_counter < 1:
         color_counter += color_step
         if color_counter > 1:
             color_counter = 1
 
-    
     # do something for each event in the event queue (list of things that happen)
     for event in pygame.event.get():
         if event.type == TIMEREVENT:
@@ -63,7 +61,6 @@ while True:
             r.x = x
             r.y = y
 
-            r = raccoon.get_rect()
         # This line will print each event to the terminal
             print(event)
         # Check to see if the current event is a QUIT event
@@ -72,6 +69,7 @@ while True:
             sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN:
             if r.collidepoint(pygame.mouse.get_pos()):
+                print("Caught")
                 x = random.randint(0, 1000 - raccoon.get_width())
                 y = random.randint(0, 500 - raccoon.get_height())
                 r.x = x
@@ -81,9 +79,10 @@ while True:
     if color_counter == 1:
         screen.blit(sun, (700,50))
         #display final score
+        final_text = font3.render(f'Congratulations! You caught {score} raccoons.', True, black, white)
         screen.blit(final_text, (0,200))
 
-    # display score
+    # display score at bottom
     score_text = font2.render(f'you caught {score} raccoons', True, black, white)
     screen.blit(score_text, (720,450))
     #show raccoon    
