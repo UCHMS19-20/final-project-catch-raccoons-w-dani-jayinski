@@ -9,10 +9,11 @@ pygame.init()
 light_blue = Vector3(173, 216, 230)
 navy = Vector3(2, 7, 93)
 white = Vector3(255, 255, 255)
+black = Vector3(0,0,0)
 # make it change slowly
 color_counter = 0
 
-color_step = .00003
+color_step = .0003
 # Create a display. Size must be a tuple, which is why it's in parentheses
 screen = pygame.display.set_mode( (1000, 500) )
 print(pygame.QUIT)
@@ -24,7 +25,10 @@ r = raccoon.get_rect()
 #make a font object
 font = pygame.font.Font('freesansbold.ttf', 32) 
 text = font.render('Catch the Raccoons before daytime!', True, white) 
-
+# keep track of and display score
+score = 0
+font2 = pygame.font.Font('freesansbold.ttf', 24)  
+score_text = font2.render(f'you caught {score} raccoons', True, black, white)
 # x and y of raccoons
 x = 300
 y = 100
@@ -33,32 +37,24 @@ clock = pygame.time.Clock()
 TIMEREVENT = pygame.USEREVENT + 1
 pygame.time.set_timer(TIMEREVENT, 2000)
 
-def did_catch_raccoon():
-    """figure out if raccoon was clicked on"""
-    pass
 
-def update_score():
-    """display number of raccoons caught"""
-    pass
-    
 # Main loop. Your game would go inside this loop
 while True:
     # make screen change color over time
     screen.fill(navy.lerp(light_blue, color_counter))
     # make text appear 
     screen.blit(text, (200,10))
-    # make sun pop up
-    if color_counter == 1:
-        screen.blit(sun, (700,50))
-    
+
     #to change color of background in increments and then stop
     if color_counter < 1:
         color_counter += color_step
         if color_counter > 1:
             color_counter = 1
+    # make sun pop up
+    if color_counter == 1:
+        screen.blit(sun, (700,50))
+        
     
-
-
     # do something for each event in the event queue (list of things that happen)
     for event in pygame.event.get():
         if event.type == TIMEREVENT:
@@ -80,8 +76,12 @@ while True:
                 y = random.randint(0, 500 - raccoon.get_height())
                 r.x = x
                 r.y = y
-                
-        
+                score =+ 1
+               
+    # display score
+    score_text = font2.render(f'you caught {score} raccoons', True, black, white)
+    screen.blit(score_text, (720,450))
+    #show raccoon    
     screen.blit(raccoon,(x,y))
     pygame.display.flip()
     
