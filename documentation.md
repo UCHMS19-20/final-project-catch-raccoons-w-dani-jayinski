@@ -19,6 +19,7 @@ I will go over how to set this up, but I promise it's simple! You will create a 
 * Citations of your sources
 * Flowchart (or link to it)
 * Presentation (or link to it)
+
 * Anything else you think may be relevant, such as directions for playing your game
 
 Please note that this may be a single page, but can be split into multiple pages for better organization. The goal is to make it easy to find all the relevant information about your project in one place.
