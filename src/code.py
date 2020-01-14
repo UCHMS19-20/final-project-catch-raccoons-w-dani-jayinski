@@ -12,7 +12,7 @@ white = Vector3(255, 255, 255)
 black = Vector3(0,0,0)
 # make color change slowly-in steps
 color_counter = 0
-color_step = .0002
+color_step = .0003
 # Create a display. Size must be a tuple, which is why it's in parentheses
 screen = pygame.display.set_mode( (1000, 500) )
 print(pygame.QUIT)
@@ -37,7 +37,6 @@ y = 100
 clock = pygame.time.Clock()
 TIMEREVENT = pygame.USEREVENT + 1
 pygame.time.set_timer(TIMEREVENT, 3000)
-
 
 # Main loop. Your game would go inside this loop
 while True:
@@ -69,7 +68,6 @@ while True:
             sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN:
             if r.collidepoint(pygame.mouse.get_pos()):
-                print("Caught")
                 x = random.randint(0, 1000 - raccoon.get_width())
                 y = random.randint(0, 500 - raccoon.get_height())
                 r.x = x
