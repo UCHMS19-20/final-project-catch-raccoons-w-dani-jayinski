@@ -61,7 +61,7 @@ while True:
             r.y = y
 
         # This line will print each event to the terminal
-            print(event)
+        print(event)
         # Check to see if the current event is a QUIT event
         if event.type == pygame.QUIT:
         # If so, exit the program
