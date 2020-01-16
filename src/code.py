@@ -38,6 +38,14 @@ clock = pygame.time.Clock()
 TIMEREVENT = pygame.USEREVENT + 1
 pygame.time.set_timer(TIMEREVENT, 3000)
 
+def change_loc():
+    """Change location of raccoon image on screen to random value"""
+    global r
+    x = random.randint(0, 1000 - raccoon.get_width())
+    y = random.randint(0, 500 - raccoon.get_height())
+    r.x = x
+    r.y = y
+
 # Main loop. Your game would go inside this loop
 while True:
     # make screen change color over time
@@ -54,11 +62,7 @@ while True:
     for event in pygame.event.get():
         # move raccoon's position after period of time defined in timer event
         if event.type == TIMEREVENT:
-            x = random.randint(0, 1000 - raccoon.get_width())
-            y = random.randint(0, 500 - raccoon.get_height())
-            # change location of rectangle too
-            r.x = x
-            r.y = y
+            change_loc()
 
         # This line will print each event to the terminal
         print(event)
@@ -66,12 +70,10 @@ while True:
         if event.type == pygame.QUIT:
         # If so, exit the program
             sys.exit()
+        # if raccoon is clicked on, move location and add a point
         if event.type == pygame.MOUSEBUTTONDOWN:
             if r.collidepoint(pygame.mouse.get_pos()):
-                x = random.randint(0, 1000 - raccoon.get_width())
-                y = random.randint(0, 500 - raccoon.get_height())
-                r.x = x
-                r.y = y
+                change_loc()
                 score += 1
 
     # make sun pop up
@@ -82,7 +84,7 @@ while True:
         screen.blit(final_text, (0,250))
     else:
         # show raccoon    
-        screen.blit(raccoon,(x,y))
+        screen.blit(raccoon,(r.x,r.y))
         # display score at bottom of screen
         score_text = font2.render(f'you caught {score} raccoons', True, black, white)
         screen.blit(score_text, (720,450))
